@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a [routerLink]="'cart'" style="color: #fff"><mat-icon>shopping_cart</mat-icon></a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav style="width: 15%" [opened]="true" [mode]="'side'">
+    <mat-nav-list>
+      <a mat-list-item (click)="onSelectCategory(null)">Все товары</a>
+      <a mat-list-item *ngFor="let category of config.categories" (click)="onSelectCategory(category.id)">{{ category.name }}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="height: 90vh">
+    <mat-list>
+      <mat-list-item *ngFor="let product of products">
+        {{ product.name }} {{ product.price | currency }}
+        <button mat-icon-button (click)="addToCart(product)">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
