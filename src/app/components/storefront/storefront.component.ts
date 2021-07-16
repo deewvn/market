@@ -25,6 +25,7 @@ export class StorefrontComponent implements OnInit, OnDestroy {
           // @ts-ignore
           activatedRoute = activatedRoute.firstChild;
         }
+        this.categoryId = Number(activatedRoute.snapshot.paramMap.get('id'));
       }
     });
   }
